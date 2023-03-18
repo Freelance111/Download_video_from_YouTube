@@ -10,7 +10,7 @@ def main():
             links = file.text
             print(links)
     else:
-        link_playlist = input('Playlist link: ')
+        link_playlist = input('Enter a playlist link: ')
         playlist = Playlist(link_playlist)
         links = playlist.video_urls
 
