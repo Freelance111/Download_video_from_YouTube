@@ -1,12 +1,15 @@
 from pytube import YouTube, Playlist
 from threading import Thread
 
-def create_task(format, link_playlist=None):
-    if format == 'file':
+def main():
+    format = input('1 - file\n2 - playlist\n')
+
+    if format == 1:
         with open('link.txt', 'r') as file:
             links = file.text
             print(links)
     else:
+        link_playlist = input('Playlist link: ')
         playlist = Playlist(link_playlist)
         links = playlist.video_urls
 
@@ -22,13 +25,5 @@ def download_video(link, number):
     print('\t' + str(number) + ' --- finish')
 
 if __name__ == '__main__':
-    format = input('1 - file\n2 - playlist\n')
-
-    link_playlist = None
-    if format == 1:
-        format = 'file'
-    else:
-        link_playlist = input('Ссылка на плейлист: ')
-
-    create_task(format, link_playlist)
+    main()
 
