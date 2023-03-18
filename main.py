@@ -1,6 +1,7 @@
 from pytube import YouTube, Playlist
 from threading import Thread
 
+
 def main():
     format = input('1 - file\n2 - playlist\n')
 
@@ -18,11 +19,13 @@ def main():
         print(f'Total video --- {len(links)}\n')
         Thread(target=download_video, args=(link, index, )).start()
 
+
 def download_video(link, number):
     video = YouTube(link)
     stream = video.streams.get_highest_resolution()
     stream.download('video/')
     print('\t' + str(number) + ' --- finish')
+
 
 if __name__ == '__main__':
     main()
